@@ -1,4 +1,6 @@
-// --- LAB 2: Sample Books Data & Default Display ---
+// ==========================================
+// LAB 2: SAMPLE BOOKS (Mock Data for Default View)
+// ==========================================
 const sampleBooks = [
     {
         title: "JavaScript: The Good Parts",
@@ -9,74 +11,83 @@ const sampleBooks = [
         title: "Eloquent JavaScript",
         author_name: ["Marijn Haverbeke"],
         first_publish_year: 2011
-    },
-    {
-        title: "You Don't Know JS",
-        author_name: ["Kyle Simpson"],
-        first_publish_year: 2014
     }
 ];
 
-// --- LAB 3: API Integration & Search Functionality ---
+// ==========================================
+// LAB 3: API INTEGRATION & SEARCH FUNCTIONALITY
+// ==========================================
 
-// 1. SELECT DOM ELEMENTS
+// 1. Select DOM elements from HTML
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 const resultsContainer = document.getElementById('resultsContainer');
 
-// 2. EVENT LISTENER FOR SEARCH BUTTON
+// 2. Add click event listener to the search button
 if (searchBtn) {
     searchBtn.addEventListener('click', () => {
         const query = searchInput.value.trim();
         
+        // Validate if input is empty
         if (query === '') {
-            alert('Please enter a book title before searching!');
+            alert('Please type a book title first!');
             return;
         }
 
+        // Call function to fetch data from API
         fetchBooksFromAPI(query);
     });
 }
 
-// 3. FETCH BOOKS FROM OPEN LIBRARY API (Async/Await)
+// 3. Asynchronous function to fetch data from Open Library API
 async function fetchBooksFromAPI(bookTitle) {
     try {
-        resultsContainer.innerHTML = '<p class="text-center col-span-full text-gray-500 py-4">Searching for books...</p>';
+        // Show loading state while fetching
+        resultsContainer.innerHTML = '<p class="text-center col-span-2 text-gray-500">Searching books...</p>';
 
+        // Fetch data from external API safely using encodeURIComponent
         const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(bookTitle)}`);
         const data = await response.json();
 
+        // Display the first 6 results on the UI
         displayBooks(data.docs.slice(0, 6));
 
     } catch (error) {
-        console.error('Error fetching data:', error);
-        resultsContainer.innerHTML = '<p class="text-red-500 text-center col-span-full py-4">Failed to fetch books. Please check your internet connection.</p>';
+        // Handle any network or API errors gracefully
+        console.error('Error fetching books:', error);
+        resultsContainer.innerHTML = '<p class="text-red-500 text-center col-span-2">Failed to load books. Check your internet connection.</p>';
     }
 }
 
-// 4. DISPLAY BOOKS ON THE UI
+// 4. Function to render books dynamically on the screen
 function displayBooks(books) {
+    // Clear previous results container
     resultsContainer.innerHTML = '';
 
+    // Check if books array is empty or undefined
     if (!books || books.length === 0) {
-        resultsContainer.innerHTML = '<p class="text-gray-500 text-center col-span-full py-4">No books found matching your search.</p>';
+        resultsContainer.innerHTML = '<p class="text-gray-500 text-center col-span-2">No books found matching your search.</p>';
         return;
     }
 
+    // Loop through each book and create a card element
     books.forEach(book => {
         const title = book.title || 'Unknown Title';
         const author = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
         const year = book.first_publish_year || 'N/A';
 
+        // Create a card div using Tailwind CSS classes
         const card = document.createElement('div');
-        card.className = 'bg-white p-4 rounded-lg shadow border border-gray-200 hover:shadow-md transition';
+        card.className = 'bg-white p-4 rounded shadow border border-gray-200';
 
+        // Insert book info into the card using template literals
         card.innerHTML = `
-            <h4 class="font-bold text-lg text-blue-700">${title}</h4>
-            <p class="text-gray-600 text-sm mt-1">Author: <span class="font-medium">${author}</span></p>
-            <p class="text-gray-500 text-xs mt-1">First Published: ${year}</p>
+            <h4 class="font-bold text-blue-600 text-lg">${title}</h4>
+            <p class="text-gray-600 text-sm mt-1">Author: ${author}</p>
+            <p class="text-gray-400 text-xs mt-1">First Published: ${year}</p>
         `;
 
+        // Append the card to the results container on the web page
         resultsContainer.appendChild(card);
     });
 }
