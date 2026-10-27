@@ -1,73 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Sets character encoding for proper text rendering -->
     <meta charset="UTF-8">
+    <!-- Ensures the layout scales correctly on mobile and desktop screens (Responsive design) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Explorer - Phase 1 Capstone</title>
-    <!-- Tailwind CSS CDN for styling (Lab 1) -->
+    <title>Book Explorer - Home</title>
+    
+    <!-- Tailwind CSS CDN: Imports utility classes directly without needing complex installation -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
     <!-- ========================================== -->
-    <!-- LAB 1: RESPONSIVE LAYOUT & NAVIGATION      -->
+    <!-- EXERCISE 1.1: NAVBAR COMPONENT             -->
     <!-- ========================================== -->
-    <header class="bg-blue-600 text-white p-4 shadow-md">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">📚 Book Explorer</h1>
-            <nav class="space-x-4">
-                <a href="#" class="hover:underline">Home</a>
+    <!-- Sticky header that stays at the top when scrolling -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- App Logo / Brand link -->
+            <a href="index.html" class="text-2xl font-bold text-indigo-600">📚 Book Explorer</a>
+            
+            <!-- Navigation links across multiple pages -->
+            <nav class="space-x-6">
+                <a href="index.html" class="text-indigo-600 font-semibold hover:text-indigo-800 transition">Home</a>
+                <a href="favorites.html" class="text-gray-600 hover:text-indigo-600 transition">Favorites</a>
             </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="max-w-4xl mx-auto p-4 flex-grow w-full">
-        
-        <!-- Intro text section -->
-        <div class="text-center my-6">
-            <h2 class="text-2xl font-bold text-gray-800">Find Your Favorite Books</h2>
-            <p class="text-gray-600">Search books from the Open Library API or explore samples below.</p>
+    <!-- ========================================== -->
+    <!-- EXERCISE 1.1: HERO SECTION COMPONENT       -->
+    <!-- ========================================== -->
+    <!-- Large introductory banner welcoming users to the app -->
+    <section class="bg-indigo-700 text-white py-16 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Discover Your Next Great Read</h1>
+            <p class="text-lg md:text-xl text-indigo-100 mb-8">Browse thousands of books instantly, explore new genres, and save your favorites.</p>
         </div>
+    </section>
 
-        <!-- ========================================== -->
-        <!-- LAB 3: API SEARCH INPUT & BUTTON           -->
-        <!-- ========================================== -->
-        <div class="bg-white p-4 rounded-lg shadow mb-6 flex gap-2">
-            <!-- Search input where user types the book title -->
-            <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="Type a book title (e.g., JavaScript)..." 
-                class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-            <!-- Button to trigger the search action -->
-            <button 
-                id="searchBtn" 
-                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-                Search
-            </button>
-        </div>
+    <!-- ========================================== -->
+    <!-- EXERCISES 1.2 & 1.3: RESPONSIVE GRID LAYOUT-->
+    <!-- ========================================== -->
+    <!-- Main content container holding our book cards -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Featured Books</h2>
 
-        <!-- ========================================== -->
-        <!-- LAB 2 & 3: DYNAMIC RESULTS CONTAINER       -->
-        <!-- ========================================== -->
-        <div>
-            <h3 class="text-lg font-semibold mb-3 text-gray-700">Book Results</h3>
-            <!-- JavaScript will dynamically insert book cards here -->
-            <div id="resultsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 
+          Responsive Grid Container (Mobile-First Design):
+          - grid-cols-1: Shows 1 card per row on mobile phones.
+          - sm:grid-cols-2: Shows 2 cards per row on small tablets.
+          - md:grid-cols-3: Shows 3 cards per row on medium screens.
+          - lg:grid-cols-4: Shows 4 cards per row on large desktop monitors.
+          - gap-6: Adds even spacing between all grid items.
+        -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <!-- Book Card Placeholder 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
+                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
+                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
+                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
+                </div>
             </div>
-        </div>
 
+            <!-- Book Card Placeholder 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
+                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
+                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
+                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
+                </div>
+            </div>
+
+            <!-- Book Card Placeholder 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
+                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
+                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
+                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
+                </div>
+            </div>
+
+            <!-- Book Card Placeholder 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
+                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
+                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
+                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <!-- FOOTER (Lab 1) -->
-    <footer class="bg-white border-t p-4 text-center text-sm text-gray-500">
-        <p>&copy; 2026 Book Explorer. All rights reserved.</p>
+    <!-- ========================================== -->
+    <!-- EXERCISE 1.1: FOOTER COMPONENT             -->
+    <!-- ========================================== -->
+    <footer class="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Book Explorer App. Built with HTML, Tailwind CSS, and JavaScript.</p>
     </footer>
 
-    <!-- Linking the JavaScript file -->
-    <script src="script.js"></script>
 </body>
 </html>
