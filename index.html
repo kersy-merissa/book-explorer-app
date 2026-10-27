@@ -133,6 +133,27 @@
     <footer class="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
         <p>&copy; 2026 Book Explorer. All rights reserved.</p>
     </footer>
-<script src="script.js"></script>
+<script src="script.js"></script> 
+<!-- LAB 3: Search Input and Results Container -->
+<div class="my-6">
+    <div class="flex gap-2 mb-4">
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Type a book title (e.g., JavaScript)..." 
+            class="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+        <button 
+            id="searchBtn" 
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+        >
+            Search
+        </button>
+    </div>
+
+    <div id="resultsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- JavaScript will dynamically insert book items here -->
+    </div>
+</div>
 </body>
 </html>
