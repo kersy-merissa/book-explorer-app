@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Explorer - About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/css/input.css">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation Header -->
+    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-wide">📚 Book Explorer</h1>
+            <nav class="space-x-6">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="favorites.html" class="hover:underline">Favorites</a>
+                <a href="about.html" class="hover:underline font-semibold">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main About Description -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">About Book Explorer</h2>
+        <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100 space-y-4 text-gray-600 leading-relaxed">
+            <p><strong>Book Explorer</strong> is a responsive web application built for the Frontend Phase 1 Capstone.</p>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Layout & Design:</strong> Built using HTML5 and Tailwind CSS for mobile-first responsiveness.</li>
+                <li><strong>Architecture:</strong> Uses ES6 JavaScript modules for clean and maintainable code separation.</li>
+                <li><strong>API Integration:</strong> Fetches live book records asynchronously via `async/await` and `fetch`.</li>
+                <li><strong>State Persistence:</strong> Uses browser `localStorage` so user favorites remain saved across refreshes.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Book Explorer Capstone.</p>
+    </footer>
+</body>
+</html>

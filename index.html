@@ -1,111 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Sets character encoding for proper text rendering -->
     <meta charset="UTF-8">
-    <!-- Ensures the layout scales correctly on mobile and desktop screens (Responsive design) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Explorer - Home</title>
-    
-    <!-- Tailwind CSS CDN: Imports utility classes directly without needing complex installation -->
+    <!-- Tailwind CSS CDN: Styles our app instantly without needing complex CSS files -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/css/input.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <!-- ========================================== -->
-    <!-- EXERCISE 1.1: NAVBAR COMPONENT             -->
-    <!-- ========================================== -->
-    <!-- Sticky header that stays at the top when scrolling -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Lab 1: Exercise 1.1 - Navigation Bar Component -->
+    <header class="bg-indigo-600 text-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- App Logo / Brand link -->
-            <a href="index.html" class="text-2xl font-bold text-indigo-600">📚 Book Explorer</a>
-            
-            <!-- Navigation links across multiple pages -->
+            <h1 class="text-xl font-bold tracking-wide">📚 Book Explorer</h1>
             <nav class="space-x-6">
-                <a href="index.html" class="text-indigo-600 font-semibold hover:text-indigo-800 transition">Home</a>
-                <a href="favorites.html" class="text-gray-600 hover:text-indigo-600 transition">Favorites</a>
+                <!-- Multi-page navigation links -->
+                <a href="index.html" class="hover:underline font-semibold">Home</a>
+                <a href="favorites.html" class="hover:underline">Favorites</a>
+                <a href="about.html" class="hover:underline">About</a>
             </nav>
         </div>
     </header>
 
-    <!-- ========================================== -->
-    <!-- EXERCISE 1.1: HERO SECTION COMPONENT       -->
-    <!-- ========================================== -->
-    <!-- Large introductory banner welcoming users to the app -->
-    <section class="bg-indigo-700 text-white py-16 px-4 text-center">
+    <!-- Lab 1: Exercise 1.1 - Hero Section & Lab 3: Exercise 3.3 - Search Input -->
+    <section class="bg-indigo-50 py-12 px-4 text-center">
         <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Discover Your Next Great Read</h1>
-            <p class="text-lg md:text-xl text-indigo-100 mb-8">Browse thousands of books instantly, explore new genres, and save your favorites.</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-indigo-900 mb-4">Discover Your Next Favorite Book</h2>
+            <p class="text-gray-600 text-base sm:text-lg mb-6">Explore thousands of books instantly using the Open Library API.</p>
+            
+            <!-- Search bar container for querying books by title -->
+            <div class="flex flex-col sm:flex-row justify-center gap-2">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search books by title (e.g., JavaScript)..." 
+                    class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-96 shadow-sm"
+                >
+                <button 
+                    id="searchBtn" 
+                    class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition shadow-sm">
+                    Search
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- EXERCISES 1.2 & 1.3: RESPONSIVE GRID LAYOUT-->
-    <!-- ========================================== -->
-    <!-- Main content container holding our book cards -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Featured Books</h2>
-
-        <!-- 
-          Responsive Grid Container (Mobile-First Design):
-          - grid-cols-1: Shows 1 card per row on mobile phones.
-          - sm:grid-cols-2: Shows 2 cards per row on small tablets.
-          - md:grid-cols-3: Shows 3 cards per row on medium screens.
-          - lg:grid-cols-4: Shows 4 cards per row on large desktop monitors.
-          - gap-6: Adds even spacing between all grid items.
-        -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-            <!-- Book Card Placeholder 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
-                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
-                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
-                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
-                </div>
-            </div>
-
-            <!-- Book Card Placeholder 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
-                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
-                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
-                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
-                </div>
-            </div>
-
-            <!-- Book Card Placeholder 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
-                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
-                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
-                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
-                </div>
-            </div>
-
-            <!-- Book Card Placeholder 4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col transition hover:shadow-lg">
-                <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400 font-medium">Cover Image</div>
-                <div class="p-4 flex flex-col flex-grow">
-                    <h3 class="font-bold text-lg mb-1 text-gray-900">Sample Book Title</h3>
-                    <p class="text-sm text-gray-600 mb-4">Author Name</p>
-                    <button class="mt-auto bg-indigo-50 text-indigo-600 hover:bg-indigo-100 font-semibold py-2 rounded transition">Add to Favorites</button>
-                </div>
-            </div>
-
+    <!-- Main Content Grid -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+        <h3 class="text-2xl font-bold mb-6 text-gray-800">Featured Books</h3>
+        
+        <!-- Lab 3: Exercise 3.4 - Loading Spinner State (Hidden by default) -->
+        <div id="loadingSpinner" class="hidden text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent"></div>
+            <p class="text-gray-500 mt-2">Loading books...</p>
         </div>
+
+        <!-- Lab 1: Exercise 1.2 & 1.3 - Responsive Grid (Mobile-first layout: 1 col mobile, 2 tablet, 4 desktop) -->
+        <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+
+        <!-- Lab 3: Exercise 3.4 - No Results State Message -->
+        <p id="noResults" class="hidden text-center text-gray-500 py-12 text-lg">No books found matching your search.</p>
     </main>
 
-    <!-- ========================================== -->
-    <!-- EXERCISE 1.1: FOOTER COMPONENT             -->
-    <!-- ========================================== -->
+    <!-- Footer Component -->
     <footer class="bg-white border-t border-gray-200 py-6 text-center text-sm text-gray-500">
-        <p>&copy; 2026 Book Explorer App. Built with HTML, Tailwind CSS, and JavaScript.</p>
+        <p>&copy; 2026 Book Explorer Capstone.</p>
     </footer>
 
+    <!-- Main JavaScript Module Entry Point -->
+    <script type="module" src="./src/js/main.js"></script>
 </body>
 </html>

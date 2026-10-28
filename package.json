@@ -1,0 +1,19 @@
+{
+  "name": "book-explorer-app2",
+  "version": "1.0.0",
+  "description": "Frontend Phase 1 Capstone - Book Explorer Web App",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
+  },
+  "keywords": [
+    "tailwind",
+    "javascript",
+    "capstone"
+  ],
+  "author": "Student",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
